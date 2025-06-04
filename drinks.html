@@ -127,6 +127,10 @@
         button.textContent = `${drinkName} добавлен`;
         button.disabled = true;
 
+        const listItem = document.createElement('li');
+        listItem.textContent = drinkName;
+        drinkListUl.appendChild(listItem);
+
         console.log('Текущий список напитков:', list_drinks);
       }
     }
