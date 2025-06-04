@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Фрукты</title>
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .card_p {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card_p:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card_p h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      color: #ff5722;
+    }
+
+    .card_p p {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .small-button-fruits {
+      background: #ff5722;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .small-button-fruits:hover:not(:disabled) {
+      background: #e64a19;
+    }
+
+    .small-button-fruits:disabled {
+      background: #ffab91;
+      cursor: default;
+    }
+
+    #selectedList_fruits {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #bf360c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card_p" id="card_banana">
+    <h2>Банан</h2>
+    <p>Рецепт: 
+      Ешьте свежим или добавляйте в смузи, овсянку и десерты.
+      <br>Калории: 89 / 100г
+    </p>
+    <button class="small-button-fruits">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_apple">
+    <h2>Яблоко</h2>
+    <p>Рецепт: 
+      Отлично подходит для перекуса, выпечки и салатов.
+      <br>Калории: 52 / 100г
+    </p>
+    <button class="small-button-fruits">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_strawberry">
+    <h2>Клубника</h2>
+    <p>Рецепт: 
+      Используйте в десертах, йогуртах или ешьте свежей.
+      <br>Калории: 32 / 100г
+    </p>
+    <button class="small-button-fruits">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_pear">
+    <h2>Груша</h2>
+    <p>Рецепт: 
+      Ешьте свежей, добавляйте в салаты или запекайте.
+      <br>Калории: 57 / 100г
+    </p>
+    <button class="small-button-fruits">Добавить</button>
+  </div>
+
+  <div id="selectedList_fruits">
+    <strong>Выбранные фрукты:</strong>
+    <ul id="fruitsList"></ul>
+  </div>
+
+  <script>
+    const buttonsFruits = document.querySelectorAll('.small-button-fruits');
+    const fruitsListUl = document.getElementById('fruitsList');
+    let listFruits = [];
+
+    buttonsFruits.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.card_p');
+        const fruitName = card.querySelector('h2').textContent.trim();
+
+        if (!listFruits.includes(fruitName)) {
+          listFruits.push(fruitName);
+
+          const li = document.createElement('li');
+          li.textContent = fruitName;
+          fruitsListUl.appendChild(li);
+
+          button.textContent = `${fruitName} добавлен`;
+          button.disabled = true;
+
+          console.log('Текущий список фруктов:', listFruits);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

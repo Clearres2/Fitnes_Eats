@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Мясные Блюда</title>
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .card_p {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card_p:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card_p h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      color: #4caf50;
+    }
+
+    .card_p p {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .small-button-testo {
+      background: #4caf50;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .small-button-testo:hover:not(:disabled) {
+      background: #388e3c;
+    }
+
+    .small-button-testo:disabled {
+      background: #a5d6a7;
+      cursor: default;
+    }
+
+    #selectedList_testo {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card_p" id="card_steak">
+    <h2>Стейк</h2>
+    <p>Рецепт: 
+      Выберите качественное мясо, например, говядину. 
+      Приготовьте маринад из оливкового масла, соли, перца и ваших любимых трав. 
+      Замариновать мясо на 30 минут. 
+      Разогрейте сковороду до высокой температуры и обжаривайте стейк с обеих сторон по 4-5 минут для средней прожарки. 
+      Дайте стейку отдохнуть 5 минут перед подачей.
+      <br>Калории: 250 / 100г
+    </p>
+    <button class="small-button-testo">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_nuggets">
+    <h2>Наггетсы</h2>
+    <p>Рецепт: 
+      Нарежьте куриное филе на кусочки. 
+      Обваляйте в муке, затем в взбитом яйце и в панировочных сухарях. 
+      Обжарьте в разогретом масле до золотистой корочки. 
+      Подавайте с соусом по выбору.
+      <br>Калории: 300 / 100г
+    </p>
+    <button class="small-button-testo">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_pelmeni">
+    <h2>Пельмени</h2>
+    <p>Рецепт: 
+      Приготовьте тесто из муки, воды и яйца. 
+      Для начинки используйте фарш (смешайте свинину и говядину) с луком и специями. 
+      Раскатайте тесто, вырежьте кружки, положите начинку и защипите края. 
+      Варите в подсоленной воде до готовности.
+      <br>Калории: 250 / 100г
+    </p>
+    <button class="small-button-testo">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_shashlik">
+    <h2>Шашлык</h2>
+    <p>Рецепт: 
+      Нарежьте мясо (свинину или баранину) на кусочки. 
+      Замаринуйте с луком, уксусом, специями и маслом на несколько часов. 
+      Насадите на шампуры и жарьте на углях, поворачивая, до готовности.
+      <br>Калории: 270 / 100г
+    </p>
+    <button class="small-button-testo">Добавить</button>
+  </div>
+
+  <div id="selectedList_testo">
+    <strong>Выбранные Мясные Блюда:</strong>
+    <ul id="testoList"></ul>
+  </div>
+
+  <script>
+    const buttons_t = document.querySelectorAll('.small-button-testo');
+    const testoListUl = document.getElementById('testoList');
+    let list_testo = [];
+
+    buttons_t.forEach(button => {
+      button.addEventListener('click', () => {
+        const card_t = button.closest('.card_p');
+        const testoName = card_t.querySelector('h2').textContent.trim();
+
+        if (!list_testo.includes(testoName)) {
+          list_testo.push(testoName);
+
+          const li = document.createElement('li');
+          li.textContent = testoName;
+          testoListUl.appendChild(li);
+
+          button.textContent = `${testoName} добавлен`;
+          button.disabled = true;
+
+          console.log('Текущий список мясных блюд:', list_testo);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

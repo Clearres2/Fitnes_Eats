@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Специи</title>
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .card_p {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card_p:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card_p h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      color: #4caf50;
+    }
+
+    .card_p p {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .small-button-species {
+      background: #4caf50;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .small-button-species:hover:not(:disabled) {
+      background: #388e3c;
+    }
+
+    .small-button-species:disabled {
+      background: #a5d6a7;
+      cursor: default;
+    }
+
+    #selectedList_species {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card_p" id="card_ketchup">
+    <h2>Кетчуп</h2>
+    <p>Рецепт: Используйте кетчуп в качестве соуса для картофеля фри или добавьте его в мясные блюда для улучшения вкуса.</p>
+    <button class="small-button-species">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_cucumbers">
+    <h2>Огурцы</h2>
+    <p>Рецепт: Нарежьте свежие огурцы и добавьте их в салат или используйте в качестве гарнира к мясным блюдам.</p>
+    <button class="small-button-species">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_mayonnaise">
+    <h2>Майонез</h2>
+    <p>Рецепт: Используйте майонез в качестве основы для салатов или как соус для сэндвичей и бургеров.</p>
+    <button class="small-button-species">Добавить</button>
+  </div>
+
+  <div class="card_p" id="card_cheese_sauce">
+    <h2>Сырный Соус</h2>
+    <p>Рецепт: Подавайте сырный соус с чипсами или используйте его для запеканок и пасты.</p>
+    <button class="small-button-species">Добавить</button>
+  </div>
+
+  <div id="selectedList_species">
+    <strong>Выбранные Специи:</strong>
+    <ul id="speciesList"></ul>
+  </div>
+
+  <script>
+    const buttons_species = document.querySelectorAll('.small-button-species');
+    const speciesListUl = document.getElementById('speciesList');
+    let list_species = [];
+
+    buttons_species.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.card_p');
+        const speciesName = card.querySelector('h2').textContent.trim();
+
+        if (!list_species.includes(speciesName)) {
+          list_species.push(speciesName);
+
+          const li = document.createElement('li');
+          li.textContent = speciesName;
+          speciesListUl.appendChild(li);
+
+          button.textContent = `${speciesName} добавлен`;
+          button.disabled = true;
+
+          console.log('Текущий список специй:', list_species);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
