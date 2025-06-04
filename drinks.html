@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Напитки</title>
   <style>
     body {
@@ -49,8 +49,19 @@
       transition: background 0.3s ease;
     }
 
-    .small-button-drinks:hover {
+    .small-button-drinks:hover:not(:disabled) {
       background: #388e3c;
+    }
+
+    .small-button-drinks:disabled {
+      background: #a5d6a7;
+      cursor: default;
+    }
+
+    #selectedList {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #2e7d32;
     }
   </style>
 </head>
@@ -90,49 +101,35 @@
     <button class="small-button-drinks">Добавить</button>
   </div>
 
-  <script>
-    const buttons = document.querySelectorAll('.card_c .small-button-drinks');
+  <div id="selectedList">
+    <strong>Выбранные напитки:</strong>
+    <ul id="drinkList"></ul>
+  </div>
 
+  <script>
     const colaButton = document.querySelector('#card_cola_one .small-button-drinks');
     const teaButton = document.querySelector('#card_tea_one .small-button-drinks');
     const coffeeButton = document.querySelector('#card_coffe_one .small-button-drinks');
     const socksButton = document.querySelector('#card_socks_one .small-button-drinks');
 
-    let list_drinks = []
+    const drinkListUl = document.getElementById('drinkList');
+
+    let list_drinks = [];
 
     colaButton.onclick = () => addList('Кола', colaButton);
     teaButton.onclick = () => addList('Чай', teaButton);
     coffeeButton.onclick = () => addList('Кофе', coffeeButton);
     socksButton.onclick = () => addList('Сок', socksButton);
 
-    function addList(drinks_pose, buttons) {
-      if (drinks_pose == "Кола") {
-        list_drinks.push("Кола")
+    function addList(drinkName, button) {
+      if (!list_drinks.includes(drinkName)) {
+        list_drinks.push(drinkName);
+        button.textContent = `${drinkName} добавлен`;
+        button.disabled = true;
 
-        button.textContent = `${drinks_pose} добавлен`;
-      }
-
-      if (drinks_pose == "Чай") {
-        list_drinks.push("Чай")
-
-        button.textContent = `${drinks_pose} добавлен`;
-      }
-
-      if (drinks_pose == "Кофе") {
-        list_drinks.push("Кофе")
-
-        button.textContent = `${drinks_pose} добавлен`;
-      }
-
-      if (drinks_pose == "Сок") {
-        list_drinks.push("Сок")
-
-        button.textContent = `${drinks_pose} добавлен`;
         console.log('Текущий список напитков:', list_drinks);
       }
     }
-
-
   </script>
 
 </body>
