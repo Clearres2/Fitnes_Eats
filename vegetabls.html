@@ -135,7 +135,7 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button class="join-lower" id="backButton_v">Назад</button>
   </div>
 
   <script>
@@ -162,6 +162,13 @@
         }
       });
     });
+
+    document.getElementById('backButton_v').addEventListener('click', () => {
+      const encodedList_v = encodeURIComponent(listVegetables.join(','));
+      location.href = `index.html?data=${encodedList_v}`;
+    });
+
+
   </script>
 
 </body>
