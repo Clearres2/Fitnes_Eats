@@ -4,96 +4,212 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Relax</title>
+  <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relax</title>
+
   <style>
-    body {
-      background-color: #e9f5f0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #2f4f4f;
-    }
 
-    #main {
-      max-width: 420px;
-      margin: 50px auto;
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-      background: white;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    h1 {
-      color: #4caf50;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      letter-spacing: 1.5px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    }
+  body {
+    background: linear-gradient(135deg, #d0f0e8, #a3d9c1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1b2a2a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+  }
 
-    .cards-container {
-      display: grid;
-      grid-template-columns: repeat(3, 120px);
-      gap: 16px;
-      justify-content: center;
-    }
+  #main {
+    max-width: 480px;
+    width: 90%;
+    padding: 30px 40px 40px;
+    background: #ffffffdd;
+    border-radius: 20px;
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.12),
+      inset 0 0 25px rgba(255, 255, 255, 0.7);
+    text-align: center;
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border: 1px solid #7bbf9e;
+    transition: box-shadow 0.3s ease;
+  }
 
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 120px;
-      height: 120px;
-      padding: 16px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
+  #main:hover {
+    box-shadow:
+      0 14px 40px rgba(0, 0, 0, 0.18),
+      inset 0 0 35px rgba(255, 255, 255, 0.9);
+  }
 
-    .card:hover {
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      transform: translateY(-3px);
-      border: 1px solid #4caf50;
-    }
+  h1 {
+    color: #2e5d4d;
+    font-size: 3.6rem;
+    font-weight: 900;
+    margin-bottom: 48px;
+    letter-spacing: 2.5px;
+    text-shadow: 2px 3px 8px rgba(46, 93, 77, 0.4);
+    user-select: none;
+  }
 
-    .card h2 {
-      margin: 0 0 8px 0;
-      font-size: 20px;
-      color: #4caf50;
-      font-weight: 700;
-    }
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 26px;
+    justify-items: center;
+  }
 
-    .small-button {
-      background: #4caf50;
-      border: none;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      color: #ffffff;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.7);
-      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-      user-select: none;
-      font-size: 32px;
-      line-height: 1;
-    }
+  .card {
+    background: #f0fff5;
+    border-radius: 20px;
+    box-shadow:
+      0 8px 18px rgba(46, 93, 77, 0.22),
+      inset 0 0 10px #b6e1c7;
+    width: 150px;
+    height: 150px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    user-select: none;
+  }
 
-    .small-button:hover {
-      background: #388e3c;
-      box-shadow: 0 6px 16px rgba(56, 142, 60, 0.85);
-      transform: scale(1.1);
-    }
-  </style>
+  .card:hover {
+    box-shadow:
+      0 20px 38px rgba(46, 93, 77, 0.35),
+      inset 0 0 16px #8fcea0;
+    transform: translateY(-7px) scale(1.07);
+    border-color: #4a9f7c;
+    background: #d8f0d8;
+  }
+
+  .card h2 {
+    margin: 0 0 14px 0;
+    font-size: 24px;
+    color: #1b3a2d;
+    font-weight: 800;
+    user-select: text;
+    text-shadow: 1px 2px 3px rgba(27, 58, 45, 0.3);
+  }
+
+  .small-button {
+    background: #3a8d4e;
+    border: none;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    color: #e0f2e9;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 8px 18px rgba(58, 141, 78, 0.8);
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease,
+      filter 0.3s ease;
+    user-select: none;
+    font-size: 36px;
+    line-height: 1;
+    outline-offset: 4px;
+    outline-color: transparent;
+    outline-style: solid;
+  }
+
+  .small-button:hover,
+  .small-button:focus-visible {
+    background: #276934;
+    box-shadow:
+      0 10px 25px rgba(39, 105, 52, 0.95);
+    transform: scale(1.22);
+    filter: drop-shadow(0 0 6px #1b3a2d);
+    outline-color: #1b3a2d;
+  }
+
+
+  .small-button:focus-visible {
+    outline-width: 3px;
+  }
+
+
+  .small-button:active {
+    transform: scale(1.1);
+    box-shadow:
+      0 6px 15px rgba(39, 105, 52, 0.7);
+  }
+</style>
+
+</head>
+<body>
+  <div id="main">
+    <h1>Типы</h1>
+
+    <div class="cards-container">
+      <div class="card" id="card_vegetables">
+        <h2>Овощи</h2>
+        <button class="small-button" onclick="location.href='vegetables.html'" arial-label="Овощные блюда">🥗</button>
+      </div>
+
+      <div class="card" id="card_drinks">
+        <h2>Напитки</h2>
+        <button class="small-button" onclick="location.href='drinks.html'" arial-label="Напитки">🥤</button>
+      </div>
+
+      <div class="card" id="card_soup">
+        <h2>Супы</h2>
+        <button class="small-button" onclick="location.href='soup.html'" arial-label="Супы">🍜</button>
+      </div>
+
+      <div class="card" id="card_testo">
+        <h2>Тесто-Блюда</h2>
+        <button class="small-button" onclick="location.href='testo.html'" arial-label="Тесто-Блюда">🍕</button>
+      </div>
+
+      <div class="card" id="card_meat">
+        <h2>Мясные</h2>
+        <button class="small-button" onclick="location.href='meat.html'" arial-label="Мясные">🥩</button>
+      </div>
+
+      <div class="card" id="card_fruits">
+        <h2>Фрукты</h2>
+        <button class="small-button" onclick="location.href='fruits.html'" arial-label="Фрукты">🍏</button>
+      </div>
+
+      <div class="card" id="card_kasha">
+        <h2>Каши</h2>
+        <button class="small-button" onclick="location.href='kasha.html'" arial-label="Каши">🥣</button>
+      </div>
+
+      <div class="card" id="card_spices">
+        <h2>Специи и допы</h2>
+        <button class="small-button" onclick="location.href='spices.html'" arial-label="Специи и допы">🧂</button>
+      </div>
+
+      <div class="card" id="card_sugar">
+        <h2>Сахарное</h2>
+        <button class="small-button" onclick="location.href='sugar.html'" arial-label="Сахарное"></button> 
+      </div>
+    </div>
+  </div>
+</body>
+</html>
 </head>
 <body>
   <div id="main">
