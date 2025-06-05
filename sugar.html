@@ -145,9 +145,9 @@
     });
 
     document.getElementById('backButton_s').addEventListener('click', () => {
-    const encodedList_s = encodeURIComponent(list_sugar.join(','));
-    location.href = `index.html?data=${encodedList_s}`;
-    });
+    localStorage.setItem('selectedSugar', JSON.stringify(list_sugar));
+    location.href = 'index.html';
+  });
   </script>
 
 </body>
