@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -159,11 +158,12 @@
     });
 
     document.getElementById('backButton_f').addEventListener('click', () => {
-      const encodedList_f = encodeURIComponent(listFruits.join(','));
-      location.href = `index.html?data=${encodedList_f}`;
-    });
+    localStorage.setItem('selectedFruit', JSON.stringify(listFruits));
+    location.href = 'index.html';
+  });
 
   </script>
 
 </body>
 </html>
+
