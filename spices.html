@@ -120,7 +120,7 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button id="backButton_sp" class="join-lower">Назад</button>
   </div>
 
   <script>
@@ -146,6 +146,11 @@
           console.log('Текущий список специй:', list_species);
         }
       });
+    });
+
+    document.getElementById('backButton_sp').addEventListener('click', () => {
+      const encodedList_sp = encodeURIComponent(list_species.join(','));
+      location.href = `index.html?data=${encodedList_sp}`;
     });
   </script>
 
