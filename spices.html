@@ -149,9 +149,10 @@
     });
 
     document.getElementById('backButton_sp').addEventListener('click', () => {
-      const encodedList_sp = encodeURIComponent(list_species.join(','));
-      location.href = `index.html?data=${encodedList_sp}`;
-    });
+    localStorage.setItem('selectedSpecies', JSON.stringify(list_species));
+    location.href = 'index.html';
+  });
+
   </script>
 
 </body>
