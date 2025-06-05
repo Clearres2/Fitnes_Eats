@@ -150,7 +150,7 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button id="backButton_so" class="join-lower">Назад</button>
   </div>
 
   <script>
@@ -180,6 +180,12 @@
         }
       });
     });
+
+    document.getElementById('backButton_so').addEventListener('click', () => {
+    localStorage.setItem('selectedSoup', JSON.stringify(list_soup));
+    location.href = 'index.html';
+  });
+
   </script>
 
 </body>
