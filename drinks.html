@@ -63,6 +63,25 @@
       font-size: 18px;
       color: #2e7d32;
     }
+
+    .btn-container-pldr {
+      margin-top: 20px;
+    }
+
+    .join-lower {
+      background: #2196F3;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .join-lower:hover {
+      background: #1976D2;
+    }
   </style>
 </head>
 <body>
@@ -106,6 +125,12 @@
     <ul id="drinkList"></ul>
   </div>
 
+  <div class="btn-container-pldr">
+    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+  </div>
+
+
+
   <script>
     const colaButton = document.querySelector('#card_cola_one .small-button-drinks');
     const teaButton = document.querySelector('#card_tea_one .small-button-drinks');
@@ -126,7 +151,7 @@
         list_drinks.push(drinkName);
         button.textContent = `${drinkName} добавлен`;
         button.disabled = true;
-
+        
         const listItem = document.createElement('li');
         listItem.textContent = drinkName;
         drinkListUl.appendChild(listItem);
