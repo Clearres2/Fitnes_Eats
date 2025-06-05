@@ -63,6 +63,24 @@
       font-size: 18px;
       color: #2e7d32;
     }
+    .btn-container-pldr {
+      margin-top: 20px;
+    }
+
+    .join-lower {
+      background: #2196F3;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .join-lower:hover {
+      background: #1976D2;
+    }
   </style>
 </head>
 <body>
@@ -131,27 +149,30 @@
     <ul id="soupList"></ul>
   </div>
 
+  <div class="btn-container-pldr">
+    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+  </div>
+
   <script>
-    // Получаем все кнопки "Добавить" для супов
+
     const buttons = document.querySelectorAll('.small-button-soup');
     const soupListUl = document.getElementById('soupList');
     let list_soup = [];
 
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        // Получаем название супа из заголовка внутри карточки
+
         const card = button.closest('.card_s');
         const soupName = card.querySelector('h2').textContent;
 
         if (!list_soup.includes(soupName)) {
           list_soup.push(soupName);
 
-          // Добавляем элемент в список выбранных супов
           const li = document.createElement('li');
           li.textContent = soupName;
           soupListUl.appendChild(li);
 
-          // Меняем текст и отключаем кнопку
+
           button.textContent = `${soupName} добавлен`;
           button.disabled = true;
 
