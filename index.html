@@ -123,9 +123,15 @@ h2 {
 
 
       <script>
-        let allSelected = [localStorage.getItem('selectedDrinks'), localStorage.getItem('selectedSoup'), localStorage.getItem('selectedTesto'), localStorage.getItem('selectedSpices')].join(', ');
-        document.body.textContent = allSelected || 'Вы ещё ничего не выбрали';
-      </script>
+          let allSelected = [
+          localStorage.getItem('selectedDrinks'),
+          localStorage.getItem('selectedSoup'),
+          localStorage.getItem('selectedTesto'),
+          localStorage.getItem('selectedSpices')
+          ].join(', ');
+
+          alert(allSelected || 'Вы ещё ничего не выбрали');
+        </script>
     </div>
   </div>
 </body>
