@@ -39,7 +39,7 @@
     }
 
     .small-button-vegetables {
-      background: #ff9800;
+      background: #4caf50;
       border: none;
       border-radius: 5px;
       color: #ffffff;
@@ -50,11 +50,11 @@
     }
 
     .small-button-vegetables:hover:not(:disabled) {
-      background: #ef6c00;
+      background: #388e3c;
     }
 
     .small-button-vegetables:disabled {
-      background: #ffcc80;
+      background: #a5d6a7;
       cursor: default;
     }
 
@@ -63,6 +63,26 @@
       font-size: 18px;
       color: #2e7d32;
     }
+
+    .btn-container-pldr {
+      margin-top: 20px;
+    }
+
+    .join-lower {
+      background: #2196F3;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .join-lower:hover {
+      background: #1976D2;
+    }
+
   </style>
 </head>
 <body>
@@ -112,6 +132,10 @@
   <div id="selectedList_vegetables">
     <strong>Выбранные овощные блюда:</strong>
     <ul id="vegetablesList"></ul>
+  </div>
+
+  <div class="btn-container-pldr">
+    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
   </div>
 
   <script>
