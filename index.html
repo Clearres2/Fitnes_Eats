@@ -127,29 +127,43 @@ h2 {
 
 
       <script>
-          let allSelected = [
-          localStorage.getItem('selectedDrinks'),
-          localStorage.getItem('selectedSoup'),
-          localStorage.getItem('selectedTesto'),
-          localStorage.getItem('selectedSpices'),
-          localStorage.getItem('selectedSugar'),
-          localStorage.getItem('selectedVegetables'),
-          localStorage.getItem('selectedFruit'),
-          localStorage.getItem('selectedMeat'),
-          localStorage.getItem('selectedKasha')
-          ].join(', ');
-           
-          const selectedItemsString = allSelected.join(', ');
+          function updateSelectedItems() {
+  const keys = [
+    'selectedDrinks',
+    'selectedSoup',
+    'selectedTesto',
+    'selectedSpices',
+    'selectedSugar',
+    'selectedVegetables',
+    'selectedFruit',
+    'selectedMeat',
+    'selectedKasha'
+  ];
 
-          document.getElementById('selectedItems').innerText = selectedItemsString;
+  const selected = keys.map(key => localStorage.getItem(key) || '');
+  const displayText = selected.join(', ');
+  document.getElementById('selectedItems').innerText = displayText;
+}
 
+updateSelectedItems();
 
-          alert(allSelected || 'Вы ещё ничего не выбрали');
+document.getElementById('clearBtn').addEventListener('click', () => {
+  const keys = [
+    'selectedDrinks',
+    'selectedSoup',
+    'selectedTesto',
+    'selectedSpices',
+    'selectedSugar',
+    'selectedVegetables',
+    'selectedFruit',
+    'selectedMeat',
+    'selectedKasha'
+  ];
 
+  keys.forEach(key => localStorage.removeItem(key));
+  updateSelectedItems();
+});
 
-          document.getElementById('clearBtn').onclick = () => {
-            localStorage.clear();
-          };
         </script>
     </div>
   </div>
