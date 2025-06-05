@@ -160,10 +160,12 @@
       }
     }
 
+    
     document.getElementById('backButton_d').addEventListener('click', () => {
-      const encodedList_d = encodeURIComponent(list_drinks.join(','));
-      location.href = `index.html?data=${encodedList_d}`;
-    });
+    localStorage.setItem('selectedDrinks', JSON.stringify(list_drinks));
+    location.href = 'index.html';
+  });
+
   </script>
 
 </body>
