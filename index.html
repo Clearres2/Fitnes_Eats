@@ -120,6 +120,12 @@ h2 {
         <h2>Сахарное</h2>
         <button class="small-button" onclick="location.href='sugar.html'" arial-label="Сахарное"></button> 
       </div>
+
+
+      <script>
+        let allSelected = [localStorage.getItem('selectedDrinks'), localStorage.getItem('selectedSoup'), localStorage.getItem('selectedTesto'), localStorage.getItem('selectedSpices')].join(', ');
+        document.body.textContent = allSelected;
+      </script>
     </div>
   </div>
 </body>
