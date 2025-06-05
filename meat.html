@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -141,21 +142,21 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button id="backButton_m" class="join-lower">Назад</button>
   </div>
 
   <script>
     const buttons_t = document.querySelectorAll('.small-button-testo');
     const testoListUl = document.getElementById('testoList');
-    let list_testo = [];
+    let list_meat = [];
 
     buttons_t.forEach(button => {
       button.addEventListener('click', () => {
         const card_t = button.closest('.card_p');
         const testoName = card_t.querySelector('h2').textContent.trim();
 
-        if (!list_testo.includes(testoName)) {
-          list_testo.push(testoName);
+        if (!list_meat.includes(testoName)) {
+          list_meat.push(testoName);
 
           const li = document.createElement('li');
           li.textContent = testoName;
@@ -164,9 +165,14 @@
           button.textContent = `${testoName} добавлен`;
           button.disabled = true;
 
-          console.log('Текущий список мясных блюд:', list_testo);
+          console.log('Текущий список мясных блюд:', list_meat);
         }
       });
+    });
+
+    document.getElementById('backButton_m').addEventListener('click', () => {
+      const encodedList_m = encodeURIComponent(list_meat.join(','));
+      location.href = `index.html?data=${encodedList_m}`;
     });
   </script>
 
