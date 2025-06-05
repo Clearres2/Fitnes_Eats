@@ -116,7 +116,7 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button class="join-lower" id="backButton_s">Назад</button>
   </div>
 
   <script>
@@ -142,6 +142,11 @@
           console.log('Текущий список сахарных блюд:', list_sugar);
         }
       });
+    });
+
+    document.getElementById('backButton_s').addEventListener('click', () => {
+    const encodedList_s = encodeURIComponent(list_sugar.join(','));
+    location.href = `index.html?data=${encodedList_s}`;
     });
   </script>
 
