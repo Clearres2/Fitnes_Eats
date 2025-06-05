@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -129,7 +130,7 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button id="backButton_f" class="join-lower">Назад</button>
   </div>
 
   <script>
@@ -156,6 +157,12 @@
         }
       });
     });
+
+    document.getElementById('backButton_f').addEventListener('click', () => {
+      const encodedList_f = encodeURIComponent(listFruits.join(','));
+      location.href = `index.html?data=${encodedList_f}`;
+    });
+
   </script>
 
 </body>
