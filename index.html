@@ -121,16 +121,35 @@ h2 {
         <button class="small-button" onclick="location.href='sugar.html'" arial-label="Сахарное"></button> 
       </div>
 
+      <button id="clearBtn">Заново</button>
+
+      <div id="selectedItems"></div>
+
 
       <script>
           let allSelected = [
           localStorage.getItem('selectedDrinks'),
           localStorage.getItem('selectedSoup'),
           localStorage.getItem('selectedTesto'),
-          localStorage.getItem('selectedSpices')
+          localStorage.getItem('selectedSpices'),
+          localStorage.getItem('selectedSugar'),
+          localStorage.getItem('selectedVegetables'),
+          localStorage.getItem('selectedFruit'),
+          localStorage.getItem('selectedMeat'),
+          localStorage.getItem('selectedKasha')
           ].join(', ');
+           
+          const selectedItemsString = allSelected.join(', ');
+
+          document.getElementById('selectedItems').innerText = selectedItemsString;
+
 
           alert(allSelected || 'Вы ещё ничего не выбрали');
+
+
+          document.getElementById('clearBtn').onclick = () => {
+            localStorage.clear();
+          };
         </script>
     </div>
   </div>
