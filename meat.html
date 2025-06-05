@@ -63,6 +63,26 @@
       font-size: 18px;
       color: #2e7d32;
     }
+
+    .btn-container-pldr {
+      margin-top: 20px;
+    }
+
+    .join-lower {
+      background: #2196F3;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .join-lower:hover {
+      background: #1976D2;
+    }
+    
   </style>
 </head>
 <body>
@@ -118,6 +138,10 @@
   <div id="selectedList_testo">
     <strong>Выбранные Мясные Блюда:</strong>
     <ul id="testoList"></ul>
+  </div>
+
+  <div class="btn-container-pldr">
+    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
   </div>
 
   <script>
