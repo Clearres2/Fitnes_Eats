@@ -22,35 +22,30 @@
 
 h1 {
     color: #4CAF50; /* зеленый цвет заголовка */
-    font-size: 2.5em; /* увеличенный размер заголовка */
-    margin-bottom: 20px;
 }
 
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px; /* увеличенный промежуток между карточками */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .card {
     background-color: #ffffff; /* белый фон для карточек */
     border: 2px solid #4CAF50; /* зеленая рамка */
-    border-radius: 10px; /* округлые углы */
-    padding: 30px; /* увеличенные отступы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* более заметная тень */
-    transition: transform 0.2s, box-shadow 0.2s; /* добавлено изменение тени */
-    height: 150px; /* фиксированная высота для карточек */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
 .card:hover {
     transform: scale(1.05); /* эффект увеличения при наведении */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* увеличение тени при наведении */
 }
 
 h2 {
     color: #4CAF50; /* зеленый цвет подзаголовков */
-    margin: 15px 0;
-    font-size: 1.5em; /* увеличенный размер подзаголовков */
+    margin: 10px 0;
 }
 
 .small-button {
@@ -58,15 +53,18 @@ h2 {
     color: white; /* белый текст */
     border: none;
     border-radius: 5px;
-    padding: 10px 20px; /* увеличенные отступы для кнопки */
+    padding: 10px 15px;
     cursor: pointer;
-    font-size: 18px; /* увеличенный размер шрифта */
-    transition: background-color 0.3s, transform 0.2s; /* добавлено изменение размера */
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 .small-button:hover {
     background-color: #45a049; /* темно-зеленый при наведении */
-    transform: translateY(-2px); /* эффект поднятия кнопки при наведении */
+}
+
+.card:last-child {
+    display: none; /* скрыть карточку "Сахарное", если не нужно */
 }
 
     
