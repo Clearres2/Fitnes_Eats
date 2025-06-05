@@ -4,191 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Relax</title>
-  <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Relax</title>
 
   <style>
-/* Общие стили */
-body {
-  font-family: 'Roboto', sans-serif; /* Более современный шрифт */
-  background: linear-gradient(to bottom, #f0f4c3, #d9e1a9); /* Мягкий, приятный фон */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: #444;
+
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* светлый фон */
+    margin: 0;
+    padding: 20px;
 }
 
-.container {
-  width: 100%;
-  max-width: 800px; /* Увеличиваем максимальную ширину */
-  padding: 30px;
+#main {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-/* Сетка карточек */
+h1 {
+    color: #4CAF50; /* зеленый цвет заголовка */
+}
+
 .cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Адаптивная сетка */
-  gap: 30px; /* Увеличиваем расстояние между карточками */
-  justify-items: center;
-  align-items: stretch; /* Растягиваем карточки по высоте */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-/* Карточка */
 .card {
-  background-color: #fff;
-  border-radius: 15px; /* Больше закругление углов */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Более мягкая тень */
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  position: relative; /* Добавляем position: relative */
+    background-color: #ffffff; /* белый фон для карточек */
+    border: 2px solid #4CAF50; /* зеленая рамка */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-8px); /* Более выраженный эффект подъема */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transform: scale(1.05); /* эффект увеличения при наведении */
 }
 
-.card h2 {
-  margin: 0;
-  padding: 30px 20px; /* Увеличиваем отступы */
-  text-align: center;
-  font-size: 1.4rem; /* Немного уменьшаем размер шрифта */
-  font-weight: 600;
-  color: #333;
-  border-bottom: 1px solid #eee;
+h2 {
+    color: #4CAF50; /* зеленый цвет подзаголовков */
+    margin: 10px 0;
 }
 
-/* Кнопка (Скрытая) */
 .small-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: rgba(0, 0, 0, 0); /* Прозрачный фон */
-  cursor: pointer;
-  outline: none; /* Убираем обводку при фокусе */
+    background-color: #4CAF50; /* зеленая кнопка */
+    color: white; /* белый текст */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-/* Иконка (SVG) */
-.small-button::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px; /* Увеличиваем размер иконки */
-  height: 70px;
-  background-size: contain; /* Чтобы иконка не обрезалась */
-  background-repeat: no-repeat;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+.small-button:hover {
+    background-color: #45a049; /* темно-зеленый при наведении */
 }
+  </style>
 
-.card:hover .small-button::after {
-  opacity: 1; /* Иконка становится более яркой при наведении */
-}
-
-/* Специальные иконки для каждой карточки */
-#card_kasha .small-button::after {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23777"%3E%3Cpath d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zM11 8h2v6h-2v-6z"/%3E%3C/svg%3E'); /* Тарелка каши */
-}
-
-#card_spices .small-button::after {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23777"%3E%3Cpath d="M19.35 10.04C18.67 6.59 15.64 4 12 4c-3.64 0-6.67 2.59-7.35 6.04C4.62 10.32 4 11.19 4 12c0 3.31 2.69 6 6 6h8c2.21 0 4-1.79 4-4 0-.81-.62-1.68-1.65-1.96zM12 22c4.42 0 8-3.58 8-8h-2c0 3.31-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8z"/%3E%3C/svg%3E'); /* Перечница */
-}
-
-#card_sugar .small-button::after {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23777"%3E%3Cpath d="M19 10.69c-.71-1.41-2.13-2.33-3.75-2.33-1.61 0-3.04.92-3.75 2.33H19zM12 3l-7 19h14L12 3zm6.09 16.41L15 15.32V8c0-.55-.45-1-1-1H10c-.55 0-1 .45-1 1v7.32l-3.09 4.09L5.41 19 12 5.41l6.59 13.59-1.5 1.41z"/%3E%3C/svg%3E'); /* Сахар */
-}
-
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-  }
-  .card h2 {
-    font-size: 1.2rem;
-    padding: 20px 15px;
-  }
-  .small-button::after {
-    width: 50px;
-    height: 50px;
-  }
-  .container {
-    padding: 20px;
-  }
-}
-
-
-
-</style>
-
-</head>
-<body>
-  <div id="main">
-    <h1>Типы</h1>
-
-    <div class="cards-container">
-      <div class="card" id="card_vegetables">
-        <h2>Овощи</h2>
-        <button class="small-button" onclick="location.href='vegetables.html'" arial-label="Овощные блюда">🥗</button>
-      </div>
-
-      <div class="card" id="card_drinks">
-        <h2>Напитки</h2>
-        <button class="small-button" onclick="location.href='drinks.html'" arial-label="Напитки">🥤</button>
-      </div>
-
-      <div class="card" id="card_soup">
-        <h2>Супы</h2>
-        <button class="small-button" onclick="location.href='soup.html'" arial-label="Супы">🍜</button>
-      </div>
-
-      <div class="card" id="card_testo">
-        <h2>Тесто-Блюда</h2>
-        <button class="small-button" onclick="location.href='testo.html'" arial-label="Тесто-Блюда">🍕</button>
-      </div>
-
-      <div class="card" id="card_meat">
-        <h2>Мясные</h2>
-        <button class="small-button" onclick="location.href='meat.html'" arial-label="Мясные">🥩</button>
-      </div>
-
-      <div class="card" id="card_fruits">
-        <h2>Фрукты</h2>
-        <button class="small-button" onclick="location.href='fruits.html'" arial-label="Фрукты">🍏</button>
-      </div>
-
-      <div class="card" id="card_kasha">
-        <h2>Каши</h2>
-        <button class="small-button" onclick="location.href='kasha.html'" arial-label="Каши">🥣</button>
-      </div>
-
-      <div class="card" id="card_spices">
-        <h2>Специи и допы</h2>
-        <button class="small-button" onclick="location.href='spices.html'" arial-label="Специи и допы">🧂</button>
-      </div>
-
-      <div class="card" id="card_sugar">
-        <h2>Сахарное</h2>
-        <button class="small-button" onclick="location.href='sugar.html'" arial-label="Сахарное"></button> 
-      </div>
-    </div>
-  </div>
-</body>
-</html>
 </head>
 <body>
   <div id="main">
