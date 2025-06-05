@@ -126,7 +126,7 @@
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" onclick="location.href='index.html'">Назад</button>
+    <button id="backButton_d" class="join-lower">Назад</button>
   </div>
 
 
@@ -159,6 +159,11 @@
         console.log('Текущий список напитков:', list_drinks);
       }
     }
+
+    document.getElementById('backButton_d').addEventListener('click', () => {
+      const encodedList_d = encodeURIComponent(list_drinks.join(','));
+      location.href = `index.html?data=${encodedList_d}`;
+    });
   </script>
 
 </body>
