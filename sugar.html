@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Овощные блюда</title>
+  <title>Сахарные Блюда</title>
   <style>
     body {
       background-color: #f0f4f8;
@@ -39,7 +38,7 @@
       line-height: 1.5;
     }
 
-    .small-button-vegetables {
+    .small-button-sugar {
       background: #4caf50;
       border: none;
       border-radius: 5px;
@@ -50,16 +49,16 @@
       transition: background 0.3s ease;
     }
 
-    .small-button-vegetables:hover:not(:disabled) {
+    .small-button-sugar:hover:not(:disabled) {
       background: #388e3c;
     }
 
-    .small-button-vegetables:disabled {
+    .small-button-sugar:disabled {
       background: #a5d6a7;
       cursor: default;
     }
 
-    #selectedList_vegetables {
+    #selectedList_sugar {
       margin-top: 30px;
       font-size: 18px;
       color: #2e7d32;
@@ -83,93 +82,72 @@
     .join-lower:hover {
       background: #1976D2;
     }
-
   </style>
 </head>
 <body>
 
-  <div class="card_p" id="card_kapusta">
-    <h2>Капуста</h2>
-    <p>Рецепт: 
-      Свежая капуста, нашинкованная мелко. 
-      Можно добавить морковь и зелень. 
-      Заправьте растительным маслом, солью и лимонным соком.
-      <br>Калории: 25 / 100г
-    </p>
-    <button class="small-button-vegetables">Добавить</button>
+  <div class="card_p" id="card_chocolate">
+    <h2>Шоколад</h2>
+    <p>Рецепт: Наслаждайтесь шоколадом как сладким угощением или используйте его для приготовления десертов, таких как шоколадный торт.</p>
+    <button class="small-button-sugar">Добавить</button>
   </div>
 
-  <div class="card_p" id="card_kapusta_tushennaya">
-    <h2>Капуста тушёная</h2>
-    <p>Рецепт: 
-      Нашинкуйте капусту. 
-      Обжарьте лук и морковь, добавьте капусту, немного воды, соль и специи. 
-      Тушите на медленном огне около 40 минут.
-      <br>Калории: 50 / 100г
-    </p>
-    <button class="small-button-vegetables">Добавить</button>
+  <div class="card_p" id="card_donuts">
+    <h2>Пончики</h2>
+    <p>Рецепт: Подавайте пончики с глазурью на праздниках или как сладкий перекус в любое время дня.</p>
+    <button class="small-button-sugar">Добавить</button>
   </div>
 
-  <div class="card_p" id="card_caesar_salad">
-    <h2>Салат Цезарь</h2>
-    <p>Рецепт: 
-      Листья салата ромэн, сухарики, пармезан, заправка из майонеза, чеснока и анчоусов. 
-      Можно добавить курицу гриль.
-      <br>Калории: 180 / 100г
-    </p>
-    <button class="small-button-vegetables">Добавить</button>
+  <div class="card_p" id="card_skittles">
+    <h2>Скитлз</h2>
+    <p>Рецепт: Используйте скитлз в качестве сладкого угощения или добавьте их в выпечку для яркого акцента.</p>
+    <button class="small-button-sugar">Добавить</button>
   </div>
 
-  <div class="card_p" id="card_zapekanka">
-    <h2>Запеканка овощная</h2>
-    <p>Рецепт: 
-      Нарежьте кабачки, баклажаны, помидоры и лук. 
-      Выложите слоями в форму, посыпьте сыром и запекайте при 180°C около 40 минут.
-      <br>Калории: 120 / 100г
-    </p>
-    <button class="small-button-vegetables">Добавить</button>
+  <div class="card_p" id="card_ice_cream">
+    <h2>Мороженое</h2>
+    <p>Рецепт: Наслаждайтесь мороженым в жаркие дни или используйте его в десертах, таких как мороженое с фруктами.</p>
+    <button class="small-button-sugar">Добавить</button>
   </div>
 
-  <div id="selectedList_vegetables">
-    <strong>Выбранные овощные блюда:</strong>
-    <ul id="vegetablesList"></ul>
+  <div id="selectedList_sugar">
+    <strong>Выбранные Сахарные Блюда:</strong>
+    <ul id="sugarList"></ul>
   </div>
 
   <div class="btn-container-pldr">
-    <button class="join-lower" id="backButton_v">Назад</button>
+    <button class="join-lower" id="backButton_s">Назад</button>
   </div>
 
   <script>
-    const buttonsVegetables = document.querySelectorAll('.small-button-vegetables');
-    const vegetablesListUl = document.getElementById('vegetablesList');
-    let listVegetables = [];
+    const buttons_sugar = document.querySelectorAll('.small-button-sugar');
+    const sugarListUl = document.getElementById('sugarList');
+    let list_sugar = [];
 
-    buttonsVegetables.forEach(button => {
+    buttons_sugar.forEach(button => {
       button.addEventListener('click', () => {
-        const card = button.closest('.card_p');
-        const vegetableName = card.querySelector('h2').textContent.trim();
+        const card_sugar = button.closest('.card_p');
+        const sugarName = card_sugar.querySelector('h2').textContent.trim();
 
-        if (!listVegetables.includes(vegetableName)) {
-          listVegetables.push(vegetableName);
+        if (!list_sugar.includes(sugarName)) {
+          list_sugar.push(sugarName);
 
           const li = document.createElement('li');
-          li.textContent = vegetableName;
-          vegetablesListUl.appendChild(li);
+          li.textContent = sugarName;
+          sugarListUl.appendChild(li);
 
-          button.textContent = `${vegetableName} добавлено`;
+          button.textContent = `${sugarName} добавлен`;
           button.disabled = true;
 
-          console.log('Текущий список овощных блюд:', listVegetables);
+          console.log('Текущий список сахарных блюд:', list_sugar);
         }
       });
     });
 
-    document.getElementById('backButton_v').addEventListener('click', () => {
-    localStorage.setItem('selectedVegetables', JSON.stringify(listVegetables));
+    document.getElementById('backButton_s').addEventListener('click', () => {
+    localStorage.setItem('selectedSugar', JSON.stringify(list_sugar));
     location.href = 'index.html';
   });
-
-
   </script>
 
 </body>
