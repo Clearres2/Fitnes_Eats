@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каши</title>
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #4caf50;
+    }
+
+    .card p {
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .btn-add {
+      background-color: #4caf50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-add:hover:not(:disabled) {
+      background-color: #388e3c;
+    }
+
+    .btn-add:disabled {
+      background-color: #a5d6a7;
+      cursor: default;
+    }
+
+    #selectedList {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #2e7d32;
+    }
+
+    #selectedList ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .btn-back {
+      background-color: #2196F3;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: #1976D2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card-grechka">
+    <h2>Гречневая каша</h2>
+    <p>Рецепт: промойте гречку, залейте водой в соотношении 1:2, варите 15–20 минут.<br>Калории: 110 ккал на 100 г</p>
+    <button class="btn-add">Добавить</button>
+  </div>
+
+  <div class="card" id="card-rice">
+    <h2>Рисовая каша</h2>
+    <p>Рецепт: промойте рис, варите с молоком или водой до мягкости, примерно 20–25 минут.<br>Калории: 130 ккал на 100 г</p>
+    <button class="btn-add">Добавить</button>
+  </div>
+
+  <div class="card" id="card-wheat">
+    <h2>Пшеная каша</h2>
+    <p>Рецепт: промойте пшено, варите в воде или молоке около 20 минут до готовности.<br>Калории: 120 ккал на 100 г</p>
+    <button class="btn-add">Добавить</button>
+  </div>
+
+  <div class="card" id="card-pearl">
+    <h2>Перловая каша</h2>
+    <p>Рецепт: замочите перловку на несколько часов, варите 40–50 минут до мягкости.<br>Калории: 110 ккал на 100 г</p>
+    <button class="btn-add">Добавить</button>
+  </div>
+
+  <div id="selectedList">
+    <strong>Выбранные каши:</strong>
+    <ul id="kasha-list"></ul>
+  </div>
+
+  <div class="btn-container">
+    <button id="backButton_k" class="btn-back">Назад</button>
+  </div>
+
+  <script>
+
+    const addButtons = document.querySelectorAll('.btn-add');
+    const kashaListUl = document.getElementById('kasha-list');
+    const selectedKasha = [];
+
+    addButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.card');
+        const kashaName = card.querySelector('h2').textContent;
+
+        if (!selectedKasha.includes(kashaName)) {
+          selectedKasha.push(kashaName);
+          button.textContent = 'Добавлено';
+          button.disabled = true;
+
+          const li = document.createElement('li');
+          li.textContent = kashaName;
+          kashaListUl.appendChild(li);
+
+          console.log('Текущий список каш:', selectedKashas);
+        }
+      });
+    });
+
+    document.getElementById('backButton_k').addEventListener('click', () => {
+      localStorage.setItem('selectedKasha', JSON.stringify(selectedKasha));
+      window.location.href = 'index.html';
+    });
+  </script>
+
+</body>
+</html>
